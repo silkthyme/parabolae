@@ -1,0 +1,353 @@
+import javax.swing.*;
+    import java.awt.*;
+    import java.awt.event.*;
+
+    public class Parabolae extends JApplet {
+
+    private boolean draw1top = false;
+    private boolean draw1bottom = false;
+    private boolean draw4top = false;
+    private boolean draw4bottom = false;
+    private boolean draw3bottom = false;
+    private boolean draw3top = false;
+    private boolean draw2bottom = false;
+    private boolean draw2top = false;
+
+    private int numClicks;
+
+    private JButton click = new JButton("Click!");
+
+    private ButtonPanel panel = new ButtonPanel();
+
+    private class ButtonPanel extends JPanel {
+
+        @Override
+        protected void paintComponent(Graphics g) {
+
+            super.paintComponent(g);
+
+        }
+
+    }
+
+    private class ButtonListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+
+            numClicks++;
+            if (numClicks == 1)
+                draw1top = true;
+            if (numClicks == 2)
+                draw1bottom = true;
+            if (numClicks == 3)
+                draw4top = true;
+            if (numClicks == 4)
+                draw4bottom = true;
+            if (numClicks == 5)
+                draw3bottom = true;
+            if (numClicks == 6)
+                draw3top = true;
+            if (numClicks == 7)
+                draw2bottom = true;
+            if (numClicks == 8)
+                draw2top = true;
+            repaint();
+        }
+    }
+
+    public void init() {
+
+        getContentPane().setBackground(Color.BLACK);
+
+        JFrame frame = new JFrame("Draw!");
+        click.addActionListener(new ButtonListener());
+
+        frame.add(panel);
+
+        frame.setLayout(new GridLayout(2,1));
+
+        frame.add(click);
+
+        frame.setLocationRelativeTo(null);
+        frame.pack();
+
+        frame.setVisible(true);
+    }
+
+    public void paint(Graphics g) {
+
+        super.paint(g);
+
+        g.setColor(Color.WHITE);
+        g.drawLine(20, 20, 280, 280);
+        g.drawLine(280, 20, 20, 280);
+        g.drawLine(20, 150, 280, 150);
+        g.drawLine(150, 20, 150, 280);
+
+    if (draw1top) {
+         /*
+          *  Top half of first quadrant
+          */
+            g.drawLine(148, 20, 160, 136);
+            g.drawLine(148, 30, 170, 126);
+            g.drawLine(148, 40, 180, 116);
+            g.drawLine(148, 50, 190, 106);
+            g.drawLine(148, 60, 200, 96);
+            g.drawLine(148, 70, 210, 86);
+            g.drawLine(148, 80, 220, 76);
+            g.drawLine(148, 90, 230, 66);
+            g.drawLine(148, 100, 240, 56);
+            g.drawLine(148, 110, 250, 46);
+            g.drawLine(148, 120, 260, 36);
+            g.drawLine(148, 130, 270, 26);
+            g.drawLine(148, 140, 280, 16);
+    }           
+    if (draw1bottom) {
+         /*
+          *  Bottom half of first quadrant
+          */
+            g.drawLine(280, 16, 160, 148);
+            g.drawLine(270, 26, 170, 148);
+            g.drawLine(260, 36, 180, 148);
+            g.drawLine(250, 46, 190, 148);
+            g.drawLine(240, 56, 200, 148);
+            g.drawLine(230, 66, 210, 148);
+            g.drawLine(220, 76, 220, 148);
+            g.drawLine(210, 86, 230, 148);
+            g.drawLine(200, 96, 240, 148);
+            g.drawLine(190, 106, 250, 148);
+            g.drawLine(180, 116, 260, 148);
+            g.drawLine(170, 126, 270, 148);
+            g.drawLine(160, 136, 280, 148);
+    }
+    if (draw4top) {
+         /*
+          *  Top half of fourth quadrant
+          */
+            g.drawLine(280, 148, 160, 160);
+            g.drawLine(270, 148, 170, 170);
+            g.drawLine(260, 148, 180, 180);
+            g.drawLine(250, 148, 190, 190);
+            g.drawLine(240, 148, 200, 200);
+            g.drawLine(230, 148, 210, 210);
+            g.drawLine(220, 148, 220, 220);
+            g.drawLine(210, 148, 230, 230);
+            g.drawLine(200, 148, 240, 240);
+            g.drawLine(190, 148, 250, 250);
+            g.drawLine(180, 148, 260, 260);
+            g.drawLine(170, 148, 270, 270);
+            g.drawLine(160, 148, 280, 280);
+    }
+    if (draw4bottom) {
+        /*
+         * Bottom half of fourth quadrant
+         */
+            g.drawLine(280, 280, 148, 160);
+            g.drawLine(270, 270, 148, 170);
+            g.drawLine(260, 260, 148, 180);
+            g.drawLine(250, 250, 148, 190);
+            g.drawLine(240, 240, 148, 200);
+            g.drawLine(230, 230, 148, 210);
+            g.drawLine(220, 220, 148, 220);
+            g.drawLine(210, 210, 148, 230);
+            g.drawLine(200, 200, 148, 240);
+            g.drawLine(190, 190, 148, 250);
+            g.drawLine(180, 180, 148, 260);
+            g.drawLine(170, 170, 148, 270);
+            g.drawLine(160, 160, 148, 280);
+    }
+    if (draw3bottom) {
+        /*
+         * Bottom half of third quadrant
+         */
+            g.drawLine(148, 280, 140, 156);
+            g.drawLine(148, 270, 130, 166);
+            g.drawLine(148, 260, 120, 176);
+            g.drawLine(148, 250, 110, 186);
+            g.drawLine(148, 240, 100, 196);
+            g.drawLine(148, 230, 90, 206);
+            g.drawLine(148, 220, 80, 216);
+            g.drawLine(148, 210, 70, 226);
+            g.drawLine(148, 200, 60, 236);
+            g.drawLine(148, 190, 50, 246);
+            g.drawLine(148, 180, 40, 256);
+            g.drawLine(148, 170, 30, 266);
+            g.drawLine(148, 180, 20, 276);
+    }
+    if (draw3top) {
+        /*
+         * Top half of third quadrant
+         */
+            g.drawLine(20, 276, 140, 148);
+            g.drawLine(30, 266, 130, 148);
+            g.drawLine(40, 256, 120, 148);
+            g.drawLine(50, 246, 110, 148);
+            g.drawLine(60, 236, 100, 148);
+            g.drawLine(70, 226, 90, 148);
+            g.drawLine(80, 216, 80, 148);
+            g.drawLine(90, 206, 70, 148);
+            g.drawLine(100, 196, 60, 148);
+            g.drawLine(110, 186, 50, 148);
+            g.drawLine(120, 176, 40, 148);
+            g.drawLine(130, 166, 30, 148);
+            g.drawLine(140, 156, 20, 148);
+    }
+    if (draw2bottom) {
+        /*
+         * Bottom half of second quadrant
+         */
+            g.drawLine(20, 148, 140, 140);
+            g.drawLine(30, 148, 130, 130);
+            g.drawLine(40, 148, 120, 120);
+            g.drawLine(50, 148, 110, 110);
+            g.drawLine(60, 148, 100, 100);
+            g.drawLine(70, 148, 90, 90);
+            g.drawLine(80, 148, 80, 80);
+            g.drawLine(90, 148, 70, 70);
+            g.drawLine(100, 148, 60, 60);
+            g.drawLine(110, 148, 50, 50);
+            g.drawLine(120, 148, 40, 40);
+            g.drawLine(130, 148, 30, 30);
+            g.drawLine(140, 148, 20, 20);
+    }
+    if (draw2top) {
+        /*
+         * Top half of second quadrant
+         */
+            g.drawLine(20, 20, 148, 140);
+            g.drawLine(30, 30, 148, 130);
+            g.drawLine(40, 40, 148, 120);
+            g.drawLine(50, 50, 148, 110);
+            g.drawLine(60, 60, 148, 100);
+            g.drawLine(70, 70, 148, 90);
+            g.drawLine(80, 80, 148, 80);
+            g.drawLine(90, 90, 148, 70);
+            g.drawLine(100, 100, 148, 60);
+            g.drawLine(110, 110, 148, 50);
+            g.drawLine(120, 120, 148, 40);
+            g.drawLine(130, 130, 148, 30);
+            g.drawLine(140, 140, 148, 20);      
+    }
+
+    /*
+     * Points for the vertical line
+     */
+            g.fillOval(148, 20, 5, 5);
+            g.fillOval(148, 30, 5, 5);
+            g.fillOval(148, 40, 5, 5);
+            g.fillOval(148, 50, 5, 5);
+            g.fillOval(148, 60, 5, 5);
+            g.fillOval(148, 70, 5, 5);
+            g.fillOval(148, 80, 5, 5);
+            g.fillOval(148, 90, 5, 5);
+            g.fillOval(148, 100, 5, 5);
+            g.fillOval(148, 110, 5, 5);
+            g.fillOval(148, 120, 5, 5);
+            g.fillOval(148, 130, 5, 5);
+            g.fillOval(148, 140, 5, 5);
+            g.fillOval(148, 150, 5, 5);
+            g.fillOval(148, 160, 5, 5);
+            g.fillOval(148, 170, 5, 5);
+            g.fillOval(148, 180, 5, 5);
+            g.fillOval(148, 190, 5, 5);
+            g.fillOval(148, 200, 5, 5);
+            g.fillOval(148, 210, 5, 5);
+            g.fillOval(148, 220, 5, 5);
+            g.fillOval(148, 230, 5, 5);
+            g.fillOval(148, 240, 5, 5);
+            g.fillOval(148, 250, 5, 5);
+            g.fillOval(148, 260, 5, 5);
+            g.fillOval(148, 270, 5, 5);
+            g.fillOval(148, 280, 5, 5);
+    /*
+     * Points for the horizontal line
+     */
+            g.fillOval(20, 148, 5, 5);
+            g.fillOval(30, 148, 5, 5);
+            g.fillOval(40, 148, 5, 5);
+            g.fillOval(50, 148, 5, 5);
+            g.fillOval(60, 148, 5, 5);
+            g.fillOval(70, 148, 5, 5);
+            g.fillOval(80, 148, 5, 5);
+            g.fillOval(90, 148, 5, 5);
+            g.fillOval(100, 148, 5, 5);
+            g.fillOval(110, 148, 5, 5);
+            g.fillOval(120, 148, 5, 5);
+            g.fillOval(130, 148, 5, 5);
+            g.fillOval(140, 148, 5, 5);
+            g.fillOval(150, 148, 5, 5);
+            g.fillOval(160, 148, 5, 5);
+            g.fillOval(170, 148, 5, 5);
+            g.fillOval(180, 148, 5, 5);
+            g.fillOval(190, 148, 5, 5);
+            g.fillOval(200, 148, 5, 5);
+            g.fillOval(210, 148, 5, 5);
+            g.fillOval(220, 148, 5, 5);
+            g.fillOval(230, 148, 5, 5);
+            g.fillOval(240, 148, 5, 5);
+            g.fillOval(250, 148, 5, 5);
+            g.fillOval(260, 148, 5, 5);
+            g.fillOval(270, 148, 5, 5);
+            g.fillOval(280, 148, 5, 5);
+    /*
+     * Points for the right to left diagonal
+     */
+            g.fillOval(280, 16, 5, 5);
+            g.fillOval(270, 26, 5, 5);
+            g.fillOval(260, 36, 5, 5);
+            g.fillOval(250, 46, 5, 5);
+            g.fillOval(240, 56, 5, 5);
+            g.fillOval(230, 66, 5, 5);
+            g.fillOval(220, 76, 5, 5);
+            g.fillOval(210, 86, 5, 5);
+            g.fillOval(200, 96, 5, 5);
+            g.fillOval(190, 106, 5, 5);
+            g.fillOval(180, 116, 5, 5);
+            g.fillOval(170, 126, 5, 5);
+            g.fillOval(160, 136, 5, 5);
+            g.fillOval(150, 146, 5, 5);
+            g.fillOval(140, 156, 5, 5);
+            g.fillOval(130, 166, 5, 5);
+            g.fillOval(120, 176, 5, 5);
+            g.fillOval(110, 186, 5, 5);
+            g.fillOval(100, 196, 5, 5);
+            g.fillOval(90, 206, 5, 5);
+            g.fillOval(80, 216, 5, 5);
+            g.fillOval(70, 226, 5, 5);
+            g.fillOval(60, 236, 5, 5);
+            g.fillOval(50, 246, 5, 5);
+            g.fillOval(40, 256, 5, 5);
+            g.fillOval(30, 266, 5, 5);
+            g.fillOval(20, 276, 5, 5);
+    /*
+     * Points for the left to right diagonal 
+     */
+            g.fillOval(20, 20, 5, 5);
+            g.fillOval(30, 30, 5, 5);
+            g.fillOval(40, 40, 5, 5);
+            g.fillOval(50, 50, 5, 5);
+            g.fillOval(60, 60, 5, 5);
+            g.fillOval(70, 70, 5, 5);
+            g.fillOval(80, 80, 5, 5);
+            g.fillOval(90, 90, 5, 5);
+            g.fillOval(100, 100, 5, 5);
+            g.fillOval(110, 110, 5, 5);
+            g.fillOval(120, 120, 5, 5);
+            g.fillOval(130, 130, 5, 5);
+            g.fillOval(140, 140, 5, 5);
+            g.fillOval(150, 150, 5, 5);
+            g.fillOval(160, 160, 5, 5);
+            g.fillOval(170, 170, 5, 5);
+            g.fillOval(180, 180, 5, 5);
+            g.fillOval(190, 190, 5, 5);
+            g.fillOval(200, 200, 5, 5);
+            g.fillOval(210, 210, 5, 5);
+            g.fillOval(220, 220, 5, 5);
+            g.fillOval(230, 230, 5, 5);
+            g.fillOval(240, 240, 5, 5);
+            g.fillOval(250, 250, 5, 5);
+            g.fillOval(260, 260, 5, 5);
+            g.fillOval(270, 270, 5, 5);
+            g.fillOval(280, 280, 5, 5);
+    }
+}
